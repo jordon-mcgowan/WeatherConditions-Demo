@@ -1,44 +1,43 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.junit.jupiter.api.*;
-import sample.WeatherConditionsAPIRetriever;
+import com.jordonmcgowan.weatherpackage.WeatherConditionsAPIRetriever;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.RepetitionInfo;
 
-import java.io.FileNotFoundException;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.io.IOException;
+import java.io.FileNotFoundException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * The WeatherConditionsAPIRetrieverTest class is
+ * responsible for testing the WeatherConditionsAPIRetriever
+ * class.
+ *
+ * @author  Jordon McGowan
+ */
 public class WeatherConditionsAPIRetrieverTest {
-    private WeatherConditionsAPIRetriever weatherConditionsAPIRetriever;
+    private final WeatherConditionsAPIRetriever apiRetriever = new WeatherConditionsAPIRetriever();
 
+    //Create array to iterate over different temperature selections
     private final String[] temperatureUnits = {"°C","°F"};
 
-    @BeforeEach
-    public void setUp() {
-
-    }
-
     @RepeatedTest(2)
-    @DisplayName("ValidCityInputtedReturnPopulatedHashMap")
+    @DisplayName("(getJsonInHashMap): Valid City Inputted -> Returns HashMap")
     public void testHashMapReturnedForValidCity(RepetitionInfo repetitionInfo) throws IOException {
         int repeatIndex = repetitionInfo.getCurrentRepetition()-1;
-        weatherConditionsAPIRetriever = new WeatherConditionsAPIRetriever("Limerick",
-                temperatureUnits[repeatIndex]);
-        boolean hashReturned = weatherConditionsAPIRetriever.getJSONInHashMap().isEmpty();
+        apiRetriever.setInputtedUserData("Limerick", temperatureUnits[repeatIndex]);
+        boolean hashReturned = apiRetriever.getJSONInHashMap().isEmpty();
+
         assertFalse(hashReturned, "HashMap Should Be Returned For Valid Input");
     }
 
     @RepeatedTest(2)
-    @DisplayName("InvalidCityInputtedThrowFileNotFoundException")
+    @DisplayName("(getJsonInHashMap): Invalid City Inputted -> Throw File Not Found Exception")
     public void testThrowFileNotFoundException(RepetitionInfo repetitionInfo) {
         int repeatIndex = repetitionInfo.getCurrentRepetition()-1;
-        weatherConditionsAPIRetriever = new WeatherConditionsAPIRetriever("spooflol",
-                temperatureUnits[repeatIndex]);
+        apiRetriever.setInputtedUserData("NotAValidCity", temperatureUnits[repeatIndex]);
 
-        assertThrows(FileNotFoundException.class, weatherConditionsAPIRetriever::getJSONInHashMap);
+        assertThrows(FileNotFoundException.class, apiRetriever::getJSONInHashMap);
     }
-
-
-
-
-    //Write tests to check exceptions are thrown
 }
