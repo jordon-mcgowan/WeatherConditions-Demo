@@ -61,7 +61,7 @@ be included by storing them locally and pointing your IntelliJ environment to th
     
   The following functionality was achieved:
   
-  * User can input location, application displays weather condtions (current temperature, temperature range and weather description), of inputted location. 
+  * User can input location, application displays weather conditions (current temperature, temperature range and weather description), of inputted location. 
   * User can select what unit of measurement the temperature is displayed to them in.
   * GUI Interface.
   * Error handling for invalid input, bad responses from the API and device not being connected to the internet.
