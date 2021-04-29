@@ -10,7 +10,7 @@ A Java GUI project, built with JavaFX, that displays the weather conditions for 
 * TestFX for JavaFX GUI testing
 
 ## How To Setup And Run
-The following setup guide will deomonstrate how to run the project on a Windows 10 machine, with IntelliJ IDEA.
+The following setup guide will demonstrate how to run the project on a Windows 10 machine, with IntelliJ IDEA.
 
 ### Downloading The Repository
 
@@ -34,11 +34,11 @@ be included by storing them locally and pointing your IntelliJ environment to th
   
   2) Download the TestFX library (testfx-junit5 from group org.testfx (version 4.0.16-alpha)) from https://jar-download.com/artifacts/org.testfx
   
-  3) Extract both files to seperate directories. TestFX when extracted should just contain JAR files, while the JAR files for the JavaFX library are contained in the 'lib' folder of the extracted zip.
+  3) Extract both files to separate directories. TestFX when extracted should just contain JAR files, while the JAR files for the JavaFX library are contained in the 'lib' folder of the extracted zip.
   
   4) In IntelliJ, with the project open, select 'File' -> 'Project Structure' -> 'Libraries' -> '+(New Project Library)' -> 'Java'
   
-  5) For the JavaFX library, select the 'lib' folder, where you have stored the libary on your local machine.
+  5) For the JavaFX library, select the 'lib' folder, where you have stored the library on your local machine.
   
   6) For the TestFX library, select the folder you have extracted the JAR files to on your local machine.
   
@@ -77,9 +77,8 @@ be included by storing them locally and pointing your IntelliJ environment to th
   2) Improve the GUI. Given more time, I would add further enhancements to the look of the GUI, using CSS techniques in JavaFX.
   
   3) Improve unit select functionality. When the user inputs a city, the application queries the API and retrieves the weather data. If the user then selects a different unit of measurement to display the data in,
-     the API is queried again. I feel this can be improved. Rather than querying the API again, the application could convert and store the additonal unit of measurement after the first query. This way, the application
+     the API is queried again. I feel this can be improved. Rather than querying the API again, the application could convert and store the additional unit of measurement after the first query. This way, the application
      can update the unit of measurement when requested, without making another API request.
   
-  4) Larger scale enhancements: Currently, the API key used for the project can only process 60 requests per minute, with 1000000 requests per month. To bring this project to a larger scale, a more scalable API subscription,
-     or different API, would be required.
+  4) Larger scale enhancements: Currently, the API key used for the project can only process 60 requests per minute, with 1000000 requests per month. To bring this project to a larger scale, a more scalable API subscription,or different API, would be required.
   
